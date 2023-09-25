@@ -1,12 +1,25 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useLoaderData, useParams } from 'react-router-dom';
+import BlogCard from './BlogCard';
 
 const Blog = () => {
-    const params = useParams();
-    console.log(params);
+    const [blog, setBlog] = useState({});
+    
+    const { id } = useParams();
+    // console.log(id);
+
+    const blogs = useLoaderData();
+    // console.log(blogs);
+
+    useEffect(() => {
+        const findBlog = blogs?.find((blog) => blog.id == id)
+        // console.log(findBlog);
+        setBlog(findBlog);
+    }, [id,blogs]);
+    console.log(blog);
     return (
         <div>
-           Blog 
+           <BlogCard blog={blog}></BlogCard>
         </div>
     );
 };

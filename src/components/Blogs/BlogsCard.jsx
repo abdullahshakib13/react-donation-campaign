@@ -2,10 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const BlogsCard = ({ blog }) => {
-    const {id,image,title,category} = blog || {}
+    const { id, image, title, category } = blog || {};
     return (
         <div>
-            <Link to={`/blogs/${id}`}>
+            <Link to={`/blogs/${id}`} >
                 <div className="relative flex flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
                 <div className="relative mx-4 -mt-6 h-56 overflow-hidden rounded-xl bg-blue-gray-500 bg-clip-border text-white ">
                     <img
