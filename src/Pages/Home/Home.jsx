@@ -1,7 +1,14 @@
+import { useLoaderData } from "react-router-dom";
+import Blogs from "../../components/Blogs/Blogs";
+import Banner from "../../components/Header/Banner/Banner";
+
 const Home = () => {
+    const blogs = useLoaderData();
+    // console.log(blogs);
     return (
         <div>
-            <h2>Home</h2>
+            <Banner></Banner>
+            <Blogs blogs={blogs}></Blogs>
         </div>
     );
 };
