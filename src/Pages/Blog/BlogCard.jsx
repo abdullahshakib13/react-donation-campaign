@@ -1,5 +1,8 @@
 import React from 'react';
 
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
+
 const BlogCard = ({ blog }) => {
     const { id, image, title, category,price,description,category_bg,card_bg,text_button_bg } = blog || {};
 
@@ -20,8 +23,9 @@ const BlogCard = ({ blog }) => {
                 addedDonationarray.push(...donateItems, blog);
                 localStorage.setItem('donation', JSON.stringify(addedDonationarray));
                 alert('products added');
+                 toast("products added");
             } else {
-                alert('already ase')
+                toast("products already exist!");
             }
 
 
@@ -66,6 +70,7 @@ const BlogCard = ({ blog }) => {
             </div>
             
             </div>
+            <ToastContainer />
         </div>
     );
 };
