@@ -8,7 +8,9 @@ const Home = () => {
     return (
         <div>
             <Banner></Banner>
-            <Blogs blogs={blogs}></Blogs>
+            <div className="py-10">
+                <Blogs blogs={blogs}></Blogs>
+            </div>
         </div>
     );
 };

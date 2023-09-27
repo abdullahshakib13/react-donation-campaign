@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import BlogCard from "../Blog/BlogCard";
+// import BlogCard from "../Blog/BlogCard";
+import DonationCard from "./DonationCard";
 
 const Donation = () => {
 
-    const [donation, setDonation] = useState();
+    const [donation, setDonation] = useState([]);
     
     const [notFound, setNotFound] = useState('');
 
@@ -15,26 +16,29 @@ const Donation = () => {
             
             setDonation(donateItems);
         } else {
-          setNotFound('no data found')  
+            setNotFound('no data found')  
         }
+        console.log(donation);
     }, [])
-    // console.log(donation);
     return (
         <div>
             {notFound ? <p className="flex justify-center items-center">{notFound}</p> :
                 <div>
-                    <div className="grid grid-cols-1 lg:grid-cols-2">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-3">
                         {
-                            isShow ? donation?.map(blog => <BlogCard key={blog.id} blog={blog}></BlogCard>) : 
-                                donation?.slice(0,4).map(blog=> <BlogCard key={blog.id} blog={blog}></BlogCard>)
+                            // isShow ? donation?.map(blog => <BlogCard key={blog.id} blog={blog}></BlogCard>) :
+                            //     donation?.slice(0,4).map(blog=> <BlogCard key={blog.id} blog={blog}></BlogCard>)
+                            isShow ? donation?.map(blog => <DonationCard key={blog.id} blog={blog}></DonationCard>) :
+                                donation?.slice(0, 4).map(blog => <DonationCard key={blog.id} blog={blog}></DonationCard>)
                         }
                     </div>
-                    {/* {donation.length > 4 && <button onClick={() => setIsShow(!isShow)}
-                        className="px-5 bg-green-200 block mx-auto">
-                        {isShow ? 'See less' : 'See All'}</button>} */}
-                    <button onClick={() => setIsShow(!isShow)}
-                        className="px-5 bg-green-200 block mx-auto">
+                    {donation.length > 4 && <button onClick={() => setIsShow(!isShow)}
+                        className=" w-[110px] h-[48px] text-white px-5 bg-[#009444] block mx-auto">
                         {isShow ? 'See less' : 'See All'}</button>}
+                    
+                    {/* <button onClick={() => setIsShow(!isShow)}
+                        className="px-5 bg-green-200 block mx-auto">
+                        {isShow ? 'See less' : 'See All'}</button> */}
                     
                 </div>}
         </div>
